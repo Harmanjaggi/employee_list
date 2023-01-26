@@ -14,7 +14,8 @@ class UpdateEmployee extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final nameController = TextEditingController(text: data.employeeName);
-    final workingExperienceController = TextEditingController(text: data.workingExperience);
+    final workingExperienceController =
+        TextEditingController(text: data.workingExperience);
     final isActiveController = ValueNotifier(data.isActive);
     final theme = Theme.of(context);
     return AlertDialog(
@@ -82,6 +83,7 @@ class UpdateEmployee extends StatelessWidget {
                 ),
               ),
             );
+            Navigator.pop(context);
           },
         ),
       ],

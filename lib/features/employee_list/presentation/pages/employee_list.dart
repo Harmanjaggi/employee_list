@@ -46,23 +46,30 @@ class EmployeeList extends StatelessWidget {
                   )),
             ),
             body: state.when(
-              loading: () => Container(),
-              failure: (e) => Text(e.toString()),
+              loading: () => const Center(
+                child: CircularProgressIndicator(),
+              ),
+              failure: (e) => Text(
+                e.toString(),
+                style: theme.textTheme.bodyLarge?.copyWith(
+                  color: theme.errorColor,
+                ),
+              ),
               success: (data) {
                 return ListView.separated(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 74),
                   itemCount: data.length,
                   itemBuilder: (context, index) {
                     return EmployeeCard(
                       emplyeeName: data[index].employeeName,
                       workingYears: data[index].workingExperience,
                       isActive: data[index].isActive,
-                      onLongPress: () {
+                      onPressDelete: () {
                         cubit.add(
                           EmployeeListEvent.delete(data[index].employeeToken),
                         );
                       },
-                      onPress: () async {
+                      onPressUpdate: () async {
                         await showDialog(
                           barrierDismissible: false,
                           context: context,

@@ -69,15 +69,16 @@ class AddEmployee extends StatelessWidget {
           child: const Text('Submit'),
           onPressed: () {
             bloc.add(
-                  EmployeeListEvent.add(
-                    Employee(
-                      employeeToken: '',
-                      employeeName: nameController.text,
-                      workingExperience: workingExperienceController.text,
-                      isActive: isActiveController.value,
-                    ),
-                  ),
-                );
+              EmployeeListEvent.add(
+                Employee(
+                  employeeToken: '',
+                  employeeName: nameController.text,
+                  workingExperience: workingExperienceController.text,
+                  isActive: isActiveController.value,
+                ),
+              ),
+            );
+            Navigator.pop(context);
           },
         ),
       ],
