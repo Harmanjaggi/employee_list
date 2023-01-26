@@ -23,11 +23,16 @@ class EmployeeListRepositoryImpl extends EmployeeListRepository {
   }
 
   @override
-  Stream<List<Employee>> getEmployeeList() {
+  Future<List<Employee>> getEmployeeList() async {
+    List<Employee> proList = [];
     try {
-      return employeeCollection.snapshots().map((snapshot) {
-        return snapshot.docs.map((doc) => Employee.fromSnapshot(doc)).toList();
+      final pro = await employeeCollection.get();
+      pro.docs.forEach((element) {
+        return proList.add(
+          Employee.fromJson(element.data() as Map<String, dynamic>),
+        );
       });
+      return proList;
     } catch (e) {
       debugPrint(e.toString());
       rethrow;

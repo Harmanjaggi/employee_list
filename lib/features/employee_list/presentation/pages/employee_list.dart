@@ -16,24 +16,26 @@ class EmployeeList extends StatelessWidget {
         employeeListRepository: EmployeeListRepositoryImpl(),
       )..add(const EmployeeListEventInitial()),
       child: BlocBuilder<EmployeeListBloc, EmployeeListState>(
-        builder: (context, state) {
+        builder: (blocContext, state) {
           return Scaffold(
             appBar: AppBar(),
             floatingActionButton: FloatingActionButton(
               onPressed: () async {
                 await showDialog(
-                  barrierDismissible: false,
-                  context: context,
-                  builder: (context) => const AddEmployee(),
-                );
+                    barrierDismissible: false,
+                    context: context,
+                    builder: (context) => AddEmployee(
+                          BlocProvider.of<EmployeeListBloc>(blocContext),
+                        ));
               },
-              child: Text('+', style: theme.textTheme.displaySmall),
+              child: Text('+',
+                  style: theme.textTheme.displaySmall?.copyWith(
+                    color: Colors.white,
+                  )),
             ),
             body: state.when(
               loading: () => Container(),
-              failure: (e) => Container(
-                child: Text(e.toString()),
-              ),
+              failure: (e) => Text(e.toString()),
               success: (data) {
                 return ListView.builder(
                   itemCount: data.length,

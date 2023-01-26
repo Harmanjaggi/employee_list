@@ -19,19 +19,19 @@ mixin _$EmployeeListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Employee> data) add,
+    required TResult Function(Employee data) add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Employee> data)? add,
+    TResult? Function(Employee data)? add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Employee> data)? add,
+    TResult Function(Employee data)? add,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,7 +114,7 @@ class _$EmployeeListEventInitial implements EmployeeListEventInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Employee> data) add,
+    required TResult Function(Employee data) add,
   }) {
     return initial();
   }
@@ -123,7 +123,7 @@ class _$EmployeeListEventInitial implements EmployeeListEventInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Employee> data)? add,
+    TResult? Function(Employee data)? add,
   }) {
     return initial?.call();
   }
@@ -132,7 +132,7 @@ class _$EmployeeListEventInitial implements EmployeeListEventInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Employee> data)? add,
+    TResult Function(Employee data)? add,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -183,7 +183,7 @@ abstract class _$$EmployeeListEventAddCopyWith<$Res> {
           $Res Function(_$EmployeeListEventAdd) then) =
       __$$EmployeeListEventAddCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Employee> data});
+  $Res call({Employee data});
 }
 
 /// @nodoc
@@ -201,9 +201,9 @@ class __$$EmployeeListEventAddCopyWithImpl<$Res>
   }) {
     return _then(_$EmployeeListEventAdd(
       null == data
-          ? _value._data
+          ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<Employee>,
+              as Employee,
     ));
   }
 }
@@ -211,15 +211,10 @@ class __$$EmployeeListEventAddCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EmployeeListEventAdd implements EmployeeListEventAdd {
-  const _$EmployeeListEventAdd(final List<Employee> data) : _data = data;
+  const _$EmployeeListEventAdd(this.data);
 
-  final List<Employee> _data;
   @override
-  List<Employee> get data {
-    if (_data is EqualUnmodifiableListView) return _data;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
-  }
+  final Employee data;
 
   @override
   String toString() {
@@ -231,12 +226,11 @@ class _$EmployeeListEventAdd implements EmployeeListEventAdd {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EmployeeListEventAdd &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            (identical(other.data, data) || other.data == data));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(runtimeType, data);
 
   @JsonKey(ignore: true)
   @override
@@ -249,7 +243,7 @@ class _$EmployeeListEventAdd implements EmployeeListEventAdd {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Employee> data) add,
+    required TResult Function(Employee data) add,
   }) {
     return add(data);
   }
@@ -258,7 +252,7 @@ class _$EmployeeListEventAdd implements EmployeeListEventAdd {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Employee> data)? add,
+    TResult? Function(Employee data)? add,
   }) {
     return add?.call(data);
   }
@@ -267,7 +261,7 @@ class _$EmployeeListEventAdd implements EmployeeListEventAdd {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Employee> data)? add,
+    TResult Function(Employee data)? add,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -309,10 +303,10 @@ class _$EmployeeListEventAdd implements EmployeeListEventAdd {
 }
 
 abstract class EmployeeListEventAdd implements EmployeeListEvent {
-  const factory EmployeeListEventAdd(final List<Employee> data) =
+  const factory EmployeeListEventAdd(final Employee data) =
       _$EmployeeListEventAdd;
 
-  List<Employee> get data;
+  Employee get data;
   @JsonKey(ignore: true)
   _$$EmployeeListEventAddCopyWith<_$EmployeeListEventAdd> get copyWith =>
       throw _privateConstructorUsedError;

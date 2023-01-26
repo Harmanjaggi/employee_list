@@ -12,14 +12,21 @@ class Employee {
     required this.workingExperience,
     required this.isActive,
   });
-
-  static Employee fromSnapshot(DocumentSnapshot snap) {
-    Employee employee = Employee(
-      employeeToken: snap['employee_token'],
-      employeeName: snap['employee_name'],
-      workingExperience: snap['working_experience'],
-      isActive: snap['is_active'],
+  factory Employee.fromJson(Map<String, dynamic> json) {
+    return Employee(
+      employeeToken: json['employee_token'],
+      employeeName: json['employee_name'],
+      workingExperience: json['working_experience'],
+      isActive: json['is_active'],
     );
-    return employee;
   }
+  // static Employee fromSnapshot(DocumentSnapshot snap) {
+  //   Employee employee = Employee(
+  //     employeeToken: snap['employee_token'],
+  //     employeeName: snap['employee_name'],
+  //     workingExperience: snap['working_experience'],
+  //     isActive: snap['is_active'],
+  //   );
+  //   return employee;
+  // }
 }
