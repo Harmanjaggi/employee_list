@@ -20,13 +20,12 @@ class Employee {
       isActive: json['is_active'],
     );
   }
-  // static Employee fromSnapshot(DocumentSnapshot snap) {
-  //   Employee employee = Employee(
-  //     employeeToken: snap['employee_token'],
-  //     employeeName: snap['employee_name'],
-  //     workingExperience: snap['working_experience'],
-  //     isActive: snap['is_active'],
-  //   );
-  //   return employee;
-  // }
+  static Map<String, Object?> toJson(Employee data) {
+    return {
+      "employee_token": data.employeeToken,
+      "employee_name": data.employeeName,
+      "working_experience": data.workingExperience,
+      "is_active": data.isActive,
+    };
+  }
 }

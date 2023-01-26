@@ -13,7 +13,7 @@ class EmployeeListBloc extends Bloc<EmployeeListEvent, EmployeeListState> {
     required EmployeeListRepositoryImpl employeeListRepository,
   })  : _employeeListRepository = employeeListRepository,
         super(const EmployeeListState.loading()) {
-    on<EmployeeListEventInitial>(
+    on<EmployeeListLoadEvent>(
       (event, emit) async {
         try {
           final data = await _employeeListRepository.getEmployeeList();
@@ -23,11 +23,35 @@ class EmployeeListBloc extends Bloc<EmployeeListEvent, EmployeeListState> {
         }
       },
     );
-    on<EmployeeListEventAdd>(
+    on<EmployeeAddEvent>(
       (event, emit) async {
         try {
           emit(const EmployeeListState.loading());
-          await _employeeListRepository.addEmployeeList(event.data);
+          await _employeeListRepository.addEmployee(event.data);
+          final data = await _employeeListRepository.getEmployeeList();
+          emit(EmployeeListState.success(data));
+        } catch (e) {
+          emit(EmployeeListState.failure(e));
+        }
+      },
+    );
+    on<EmployeeDeleteEvent>(
+      (event, emit) async {
+        try {
+          emit(const EmployeeListState.loading());
+          await _employeeListRepository.deleteEmployee(event.token);
+          final data = await _employeeListRepository.getEmployeeList();
+          emit(EmployeeListState.success(data));
+        } catch (e) {
+          emit(EmployeeListState.failure(e));
+        }
+      },
+    );
+    on<EmployeeUpdateEvent>(
+      (event, emit) async {
+        try {
+          emit(const EmployeeListState.loading());
+          await _employeeListRepository.updateEmployee(event.data);
           final data = await _employeeListRepository.getEmployeeList();
           emit(EmployeeListState.success(data));
         } catch (e) {

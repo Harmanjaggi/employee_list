@@ -18,39 +18,51 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EmployeeListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() load,
     required TResult Function(Employee data) add,
+    required TResult Function(String token) delete,
+    required TResult Function(Employee data) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? load,
     TResult? Function(Employee data)? add,
+    TResult? Function(String token)? delete,
+    TResult? Function(Employee data)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? load,
     TResult Function(Employee data)? add,
+    TResult Function(String token)? delete,
+    TResult Function(Employee data)? update,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EmployeeListEventInitial value) initial,
-    required TResult Function(EmployeeListEventAdd value) add,
+    required TResult Function(EmployeeListLoadEvent value) load,
+    required TResult Function(EmployeeAddEvent value) add,
+    required TResult Function(EmployeeDeleteEvent value) delete,
+    required TResult Function(EmployeeUpdateEvent value) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EmployeeListEventInitial value)? initial,
-    TResult? Function(EmployeeListEventAdd value)? add,
+    TResult? Function(EmployeeListLoadEvent value)? load,
+    TResult? Function(EmployeeAddEvent value)? add,
+    TResult? Function(EmployeeDeleteEvent value)? delete,
+    TResult? Function(EmployeeUpdateEvent value)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EmployeeListEventInitial value)? initial,
-    TResult Function(EmployeeListEventAdd value)? add,
+    TResult Function(EmployeeListLoadEvent value)? load,
+    TResult Function(EmployeeAddEvent value)? add,
+    TResult Function(EmployeeDeleteEvent value)? delete,
+    TResult Function(EmployeeUpdateEvent value)? update,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,36 +87,35 @@ class _$EmployeeListEventCopyWithImpl<$Res, $Val extends EmployeeListEvent>
 }
 
 /// @nodoc
-abstract class _$$EmployeeListEventInitialCopyWith<$Res> {
-  factory _$$EmployeeListEventInitialCopyWith(_$EmployeeListEventInitial value,
-          $Res Function(_$EmployeeListEventInitial) then) =
-      __$$EmployeeListEventInitialCopyWithImpl<$Res>;
+abstract class _$$EmployeeListLoadEventCopyWith<$Res> {
+  factory _$$EmployeeListLoadEventCopyWith(_$EmployeeListLoadEvent value,
+          $Res Function(_$EmployeeListLoadEvent) then) =
+      __$$EmployeeListLoadEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EmployeeListEventInitialCopyWithImpl<$Res>
-    extends _$EmployeeListEventCopyWithImpl<$Res, _$EmployeeListEventInitial>
-    implements _$$EmployeeListEventInitialCopyWith<$Res> {
-  __$$EmployeeListEventInitialCopyWithImpl(_$EmployeeListEventInitial _value,
-      $Res Function(_$EmployeeListEventInitial) _then)
+class __$$EmployeeListLoadEventCopyWithImpl<$Res>
+    extends _$EmployeeListEventCopyWithImpl<$Res, _$EmployeeListLoadEvent>
+    implements _$$EmployeeListLoadEventCopyWith<$Res> {
+  __$$EmployeeListLoadEventCopyWithImpl(_$EmployeeListLoadEvent _value,
+      $Res Function(_$EmployeeListLoadEvent) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$EmployeeListEventInitial implements EmployeeListEventInitial {
-  const _$EmployeeListEventInitial();
+class _$EmployeeListLoadEvent implements EmployeeListLoadEvent {
+  const _$EmployeeListLoadEvent();
 
   @override
   String toString() {
-    return 'EmployeeListEvent.initial()';
+    return 'EmployeeListEvent.load()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$EmployeeListEventInitial);
+        (other.runtimeType == runtimeType && other is _$EmployeeListLoadEvent);
   }
 
   @override
@@ -113,30 +124,36 @@ class _$EmployeeListEventInitial implements EmployeeListEventInitial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() load,
     required TResult Function(Employee data) add,
+    required TResult Function(String token) delete,
+    required TResult Function(Employee data) update,
   }) {
-    return initial();
+    return load();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? load,
     TResult? Function(Employee data)? add,
+    TResult? Function(String token)? delete,
+    TResult? Function(Employee data)? update,
   }) {
-    return initial?.call();
+    return load?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? load,
     TResult Function(Employee data)? add,
+    TResult Function(String token)? delete,
+    TResult Function(Employee data)? update,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (load != null) {
+      return load();
     }
     return orElse();
   }
@@ -144,54 +161,60 @@ class _$EmployeeListEventInitial implements EmployeeListEventInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EmployeeListEventInitial value) initial,
-    required TResult Function(EmployeeListEventAdd value) add,
+    required TResult Function(EmployeeListLoadEvent value) load,
+    required TResult Function(EmployeeAddEvent value) add,
+    required TResult Function(EmployeeDeleteEvent value) delete,
+    required TResult Function(EmployeeUpdateEvent value) update,
   }) {
-    return initial(this);
+    return load(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EmployeeListEventInitial value)? initial,
-    TResult? Function(EmployeeListEventAdd value)? add,
+    TResult? Function(EmployeeListLoadEvent value)? load,
+    TResult? Function(EmployeeAddEvent value)? add,
+    TResult? Function(EmployeeDeleteEvent value)? delete,
+    TResult? Function(EmployeeUpdateEvent value)? update,
   }) {
-    return initial?.call(this);
+    return load?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EmployeeListEventInitial value)? initial,
-    TResult Function(EmployeeListEventAdd value)? add,
+    TResult Function(EmployeeListLoadEvent value)? load,
+    TResult Function(EmployeeAddEvent value)? add,
+    TResult Function(EmployeeDeleteEvent value)? delete,
+    TResult Function(EmployeeUpdateEvent value)? update,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (load != null) {
+      return load(this);
     }
     return orElse();
   }
 }
 
-abstract class EmployeeListEventInitial implements EmployeeListEvent {
-  const factory EmployeeListEventInitial() = _$EmployeeListEventInitial;
+abstract class EmployeeListLoadEvent implements EmployeeListEvent {
+  const factory EmployeeListLoadEvent() = _$EmployeeListLoadEvent;
 }
 
 /// @nodoc
-abstract class _$$EmployeeListEventAddCopyWith<$Res> {
-  factory _$$EmployeeListEventAddCopyWith(_$EmployeeListEventAdd value,
-          $Res Function(_$EmployeeListEventAdd) then) =
-      __$$EmployeeListEventAddCopyWithImpl<$Res>;
+abstract class _$$EmployeeAddEventCopyWith<$Res> {
+  factory _$$EmployeeAddEventCopyWith(
+          _$EmployeeAddEvent value, $Res Function(_$EmployeeAddEvent) then) =
+      __$$EmployeeAddEventCopyWithImpl<$Res>;
   @useResult
   $Res call({Employee data});
 }
 
 /// @nodoc
-class __$$EmployeeListEventAddCopyWithImpl<$Res>
-    extends _$EmployeeListEventCopyWithImpl<$Res, _$EmployeeListEventAdd>
-    implements _$$EmployeeListEventAddCopyWith<$Res> {
-  __$$EmployeeListEventAddCopyWithImpl(_$EmployeeListEventAdd _value,
-      $Res Function(_$EmployeeListEventAdd) _then)
+class __$$EmployeeAddEventCopyWithImpl<$Res>
+    extends _$EmployeeListEventCopyWithImpl<$Res, _$EmployeeAddEvent>
+    implements _$$EmployeeAddEventCopyWith<$Res> {
+  __$$EmployeeAddEventCopyWithImpl(
+      _$EmployeeAddEvent _value, $Res Function(_$EmployeeAddEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -199,7 +222,7 @@ class __$$EmployeeListEventAddCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$EmployeeListEventAdd(
+    return _then(_$EmployeeAddEvent(
       null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -210,8 +233,8 @@ class __$$EmployeeListEventAddCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EmployeeListEventAdd implements EmployeeListEventAdd {
-  const _$EmployeeListEventAdd(this.data);
+class _$EmployeeAddEvent implements EmployeeAddEvent {
+  const _$EmployeeAddEvent(this.data);
 
   @override
   final Employee data;
@@ -225,7 +248,7 @@ class _$EmployeeListEventAdd implements EmployeeListEventAdd {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EmployeeListEventAdd &&
+            other is _$EmployeeAddEvent &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -235,15 +258,16 @@ class _$EmployeeListEventAdd implements EmployeeListEventAdd {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EmployeeListEventAddCopyWith<_$EmployeeListEventAdd> get copyWith =>
-      __$$EmployeeListEventAddCopyWithImpl<_$EmployeeListEventAdd>(
-          this, _$identity);
+  _$$EmployeeAddEventCopyWith<_$EmployeeAddEvent> get copyWith =>
+      __$$EmployeeAddEventCopyWithImpl<_$EmployeeAddEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() load,
     required TResult Function(Employee data) add,
+    required TResult Function(String token) delete,
+    required TResult Function(Employee data) update,
   }) {
     return add(data);
   }
@@ -251,8 +275,10 @@ class _$EmployeeListEventAdd implements EmployeeListEventAdd {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? load,
     TResult? Function(Employee data)? add,
+    TResult? Function(String token)? delete,
+    TResult? Function(Employee data)? update,
   }) {
     return add?.call(data);
   }
@@ -260,8 +286,10 @@ class _$EmployeeListEventAdd implements EmployeeListEventAdd {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? load,
     TResult Function(Employee data)? add,
+    TResult Function(String token)? delete,
+    TResult Function(Employee data)? update,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -273,8 +301,10 @@ class _$EmployeeListEventAdd implements EmployeeListEventAdd {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EmployeeListEventInitial value) initial,
-    required TResult Function(EmployeeListEventAdd value) add,
+    required TResult Function(EmployeeListLoadEvent value) load,
+    required TResult Function(EmployeeAddEvent value) add,
+    required TResult Function(EmployeeDeleteEvent value) delete,
+    required TResult Function(EmployeeUpdateEvent value) update,
   }) {
     return add(this);
   }
@@ -282,8 +312,10 @@ class _$EmployeeListEventAdd implements EmployeeListEventAdd {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EmployeeListEventInitial value)? initial,
-    TResult? Function(EmployeeListEventAdd value)? add,
+    TResult? Function(EmployeeListLoadEvent value)? load,
+    TResult? Function(EmployeeAddEvent value)? add,
+    TResult? Function(EmployeeDeleteEvent value)? delete,
+    TResult? Function(EmployeeUpdateEvent value)? update,
   }) {
     return add?.call(this);
   }
@@ -291,8 +323,10 @@ class _$EmployeeListEventAdd implements EmployeeListEventAdd {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EmployeeListEventInitial value)? initial,
-    TResult Function(EmployeeListEventAdd value)? add,
+    TResult Function(EmployeeListLoadEvent value)? load,
+    TResult Function(EmployeeAddEvent value)? add,
+    TResult Function(EmployeeDeleteEvent value)? delete,
+    TResult Function(EmployeeUpdateEvent value)? update,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -302,13 +336,305 @@ class _$EmployeeListEventAdd implements EmployeeListEventAdd {
   }
 }
 
-abstract class EmployeeListEventAdd implements EmployeeListEvent {
-  const factory EmployeeListEventAdd(final Employee data) =
-      _$EmployeeListEventAdd;
+abstract class EmployeeAddEvent implements EmployeeListEvent {
+  const factory EmployeeAddEvent(final Employee data) = _$EmployeeAddEvent;
 
   Employee get data;
   @JsonKey(ignore: true)
-  _$$EmployeeListEventAddCopyWith<_$EmployeeListEventAdd> get copyWith =>
+  _$$EmployeeAddEventCopyWith<_$EmployeeAddEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EmployeeDeleteEventCopyWith<$Res> {
+  factory _$$EmployeeDeleteEventCopyWith(_$EmployeeDeleteEvent value,
+          $Res Function(_$EmployeeDeleteEvent) then) =
+      __$$EmployeeDeleteEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String token});
+}
+
+/// @nodoc
+class __$$EmployeeDeleteEventCopyWithImpl<$Res>
+    extends _$EmployeeListEventCopyWithImpl<$Res, _$EmployeeDeleteEvent>
+    implements _$$EmployeeDeleteEventCopyWith<$Res> {
+  __$$EmployeeDeleteEventCopyWithImpl(
+      _$EmployeeDeleteEvent _value, $Res Function(_$EmployeeDeleteEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? token = null,
+  }) {
+    return _then(_$EmployeeDeleteEvent(
+      null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EmployeeDeleteEvent implements EmployeeDeleteEvent {
+  const _$EmployeeDeleteEvent(this.token);
+
+  @override
+  final String token;
+
+  @override
+  String toString() {
+    return 'EmployeeListEvent.delete(token: $token)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EmployeeDeleteEvent &&
+            (identical(other.token, token) || other.token == token));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, token);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EmployeeDeleteEventCopyWith<_$EmployeeDeleteEvent> get copyWith =>
+      __$$EmployeeDeleteEventCopyWithImpl<_$EmployeeDeleteEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function(Employee data) add,
+    required TResult Function(String token) delete,
+    required TResult Function(Employee data) update,
+  }) {
+    return delete(token);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function(Employee data)? add,
+    TResult? Function(String token)? delete,
+    TResult? Function(Employee data)? update,
+  }) {
+    return delete?.call(token);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function(Employee data)? add,
+    TResult Function(String token)? delete,
+    TResult Function(Employee data)? update,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete(token);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmployeeListLoadEvent value) load,
+    required TResult Function(EmployeeAddEvent value) add,
+    required TResult Function(EmployeeDeleteEvent value) delete,
+    required TResult Function(EmployeeUpdateEvent value) update,
+  }) {
+    return delete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EmployeeListLoadEvent value)? load,
+    TResult? Function(EmployeeAddEvent value)? add,
+    TResult? Function(EmployeeDeleteEvent value)? delete,
+    TResult? Function(EmployeeUpdateEvent value)? update,
+  }) {
+    return delete?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmployeeListLoadEvent value)? load,
+    TResult Function(EmployeeAddEvent value)? add,
+    TResult Function(EmployeeDeleteEvent value)? delete,
+    TResult Function(EmployeeUpdateEvent value)? update,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EmployeeDeleteEvent implements EmployeeListEvent {
+  const factory EmployeeDeleteEvent(final String token) = _$EmployeeDeleteEvent;
+
+  String get token;
+  @JsonKey(ignore: true)
+  _$$EmployeeDeleteEventCopyWith<_$EmployeeDeleteEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EmployeeUpdateEventCopyWith<$Res> {
+  factory _$$EmployeeUpdateEventCopyWith(_$EmployeeUpdateEvent value,
+          $Res Function(_$EmployeeUpdateEvent) then) =
+      __$$EmployeeUpdateEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Employee data});
+}
+
+/// @nodoc
+class __$$EmployeeUpdateEventCopyWithImpl<$Res>
+    extends _$EmployeeListEventCopyWithImpl<$Res, _$EmployeeUpdateEvent>
+    implements _$$EmployeeUpdateEventCopyWith<$Res> {
+  __$$EmployeeUpdateEventCopyWithImpl(
+      _$EmployeeUpdateEvent _value, $Res Function(_$EmployeeUpdateEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$EmployeeUpdateEvent(
+      null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Employee,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EmployeeUpdateEvent implements EmployeeUpdateEvent {
+  const _$EmployeeUpdateEvent(this.data);
+
+  @override
+  final Employee data;
+
+  @override
+  String toString() {
+    return 'EmployeeListEvent.update(data: $data)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EmployeeUpdateEvent &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EmployeeUpdateEventCopyWith<_$EmployeeUpdateEvent> get copyWith =>
+      __$$EmployeeUpdateEventCopyWithImpl<_$EmployeeUpdateEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function(Employee data) add,
+    required TResult Function(String token) delete,
+    required TResult Function(Employee data) update,
+  }) {
+    return update(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function(Employee data)? add,
+    TResult? Function(String token)? delete,
+    TResult? Function(Employee data)? update,
+  }) {
+    return update?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function(Employee data)? add,
+    TResult Function(String token)? delete,
+    TResult Function(Employee data)? update,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmployeeListLoadEvent value) load,
+    required TResult Function(EmployeeAddEvent value) add,
+    required TResult Function(EmployeeDeleteEvent value) delete,
+    required TResult Function(EmployeeUpdateEvent value) update,
+  }) {
+    return update(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EmployeeListLoadEvent value)? load,
+    TResult? Function(EmployeeAddEvent value)? add,
+    TResult? Function(EmployeeDeleteEvent value)? delete,
+    TResult? Function(EmployeeUpdateEvent value)? update,
+  }) {
+    return update?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmployeeListLoadEvent value)? load,
+    TResult Function(EmployeeAddEvent value)? add,
+    TResult Function(EmployeeDeleteEvent value)? delete,
+    TResult Function(EmployeeUpdateEvent value)? update,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EmployeeUpdateEvent implements EmployeeListEvent {
+  const factory EmployeeUpdateEvent(final Employee data) =
+      _$EmployeeUpdateEvent;
+
+  Employee get data;
+  @JsonKey(ignore: true)
+  _$$EmployeeUpdateEventCopyWith<_$EmployeeUpdateEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

@@ -7,13 +7,16 @@ class EmployeeListRepositoryImpl extends EmployeeListRepository {
   final CollectionReference employeeCollection =
       FirebaseFirestore.instance.collection("employee_list");
   @override
-  Future<bool> addEmployeeList(Employee data) async {
+  Future<bool> addEmployee(Employee data) async {
     try {
       DocumentReference employeeReference = await employeeCollection.add({
-        "employee_token": data.employeeToken,
+        "employee_token": "",
         "employee_name": data.employeeName,
         "working_experience": data.workingExperience,
         "is_active": data.isActive,
+      });
+      await employeeReference.update({
+        "employee_token": employeeReference.id,
       });
       return true;
     } catch (e) {
@@ -36,6 +39,30 @@ class EmployeeListRepositoryImpl extends EmployeeListRepository {
     } catch (e) {
       debugPrint(e.toString());
       rethrow;
+    }
+  }
+
+  @override
+  Future<bool> deleteEmployee(String token) async {
+    try {
+      await employeeCollection.doc(token).delete();
+      return true;
+    } catch (e) {
+      debugPrint(e.toString());
+      return false;
+    }
+  }
+
+  @override
+  Future<bool> updateEmployee(Employee data) async {
+    try {
+      await employeeCollection.doc(data.employeeToken).update(
+            Employee.toJson(data),
+          );
+      return true;
+    } catch (e) {
+      debugPrint(e.toString());
+      return false;
     }
   }
 }

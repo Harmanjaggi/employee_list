@@ -5,6 +5,8 @@ import 'package:employee_list/features/employee_list/presentation/widgets/employ
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../widgets/update_employee.dart';
+
 class EmployeeList extends StatelessWidget {
   const EmployeeList({super.key});
 
@@ -14,19 +16,29 @@ class EmployeeList extends StatelessWidget {
     return BlocProvider(
       create: (_) => EmployeeListBloc(
         employeeListRepository: EmployeeListRepositoryImpl(),
-      )..add(const EmployeeListEventInitial()),
+      )..add(const EmployeeListEvent.load()),
       child: BlocBuilder<EmployeeListBloc, EmployeeListState>(
         builder: (blocContext, state) {
+          final cubit = blocContext.read<EmployeeListBloc>();
           return Scaffold(
-            appBar: AppBar(),
+            appBar: AppBar(
+              centerTitle: true,
+              title: Text(
+                'Employee List',
+                style: theme.textTheme.headline5?.copyWith(
+                  color: Colors.white,
+                ),
+              ),
+            ),
             floatingActionButton: FloatingActionButton(
               onPressed: () async {
                 await showDialog(
-                    barrierDismissible: false,
-                    context: context,
-                    builder: (context) => AddEmployee(
-                          BlocProvider.of<EmployeeListBloc>(blocContext),
-                        ));
+                  barrierDismissible: false,
+                  context: context,
+                  builder: (context) => AddEmployee(
+                    BlocProvider.of<EmployeeListBloc>(blocContext),
+                  ),
+                );
               },
               child: Text('+',
                   style: theme.textTheme.displaySmall?.copyWith(
@@ -37,14 +49,33 @@ class EmployeeList extends StatelessWidget {
               loading: () => Container(),
               failure: (e) => Text(e.toString()),
               success: (data) {
-                return ListView.builder(
+                return ListView.separated(
+                  padding: const EdgeInsets.all(16),
                   itemCount: data.length,
                   itemBuilder: (context, index) {
                     return EmployeeCard(
                       emplyeeName: data[index].employeeName,
                       workingYears: data[index].workingExperience,
+                      isActive: data[index].isActive,
+                      onLongPress: () {
+                        cubit.add(
+                          EmployeeListEvent.delete(data[index].employeeToken),
+                        );
+                      },
+                      onPress: () async {
+                        await showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (context) => UpdateEmployee(
+                            bloc:
+                                BlocProvider.of<EmployeeListBloc>(blocContext),
+                            data: data[index],
+                          ),
+                        );
+                      },
                     );
                   },
+                  separatorBuilder: (_, __) => const SizedBox(height: 16),
                 );
               },
             ),
