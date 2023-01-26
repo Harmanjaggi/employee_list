@@ -2,7 +2,6 @@ import 'package:employee_list/features/components/custom_testfeild.dart';
 import 'package:employee_list/features/employee_list/data/models/employee_model.dart';
 import 'package:employee_list/features/employee_list/presentation/bloc/employee_list_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddEmployee extends StatelessWidget {
   const AddEmployee(this.bloc, {super.key});
